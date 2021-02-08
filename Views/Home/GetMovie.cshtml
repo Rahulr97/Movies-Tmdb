@@ -1,0 +1,42 @@
+﻿@model piquota.Models.Movie
+@*@using piquota.Class;*@
+<style>
+    body {
+        background-color: #000;
+    }
+
+    #apiDiv {
+        padding-left: 20px;
+        display: inline-block;
+        width: 95%;
+        text-align: justify;
+    }
+
+        #apiDiv h4 {
+            margin: 10px 0;
+        }
+
+        #apiDiv .biography img {
+            float: left;
+            padding-right: 10px;
+        }
+
+        #apiDiv .return {
+            text-align: center;
+        }
+
+            #apiDiv .return a {
+                color: #00e8ff;
+                font-size: 20px;
+                text-decoration: underline;
+            }
+</style>
+
+<div id="apiDiv">
+    <div class="return"><a href="@Url.Action("Index", "TmdbApi")">Return</a></div>
+    <h4>@Model.title</h4>
+    <p class="Overview"><img src="@Model.poster_path" />@Model.overview</p>
+    <p>Popularity: @Model.popularity</p>
+    <p>Runtime: @Model.runtime</p>
+    <p>release_date: @Model.release_date</p>
+</div>
