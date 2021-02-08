@@ -14,7 +14,8 @@ namespace piquota.Models
             public string overview { get; set; }
             public string poster_path { get; set; }
             public string homepage { get; set; }
-            public string production_companies { get; set; }
+            
+            public string budget { get; set; }
             public string release_date { get; set; }
             public string revenue { get; set; }
             public double vote_average { get; set; }
@@ -24,10 +25,11 @@ namespace piquota.Models
     }
     public class Result
     {
-        public string profile_path { get; set; }
+        public string poster_path { get; set; }
         public bool adult { get; set; }
         public int id { get; set; }
         public string name { get; set; }
+        public string budget { get; set; }
         public double popularity { get; set; }
     }
     public class ResponseSearchMovie
@@ -44,8 +46,9 @@ namespace piquota.Models
         public string id { get; set; }
         public string title { get; set; }
         public string overview { get; set; }
-        public string production_companies { get; set; }
+        public string budget { get; set; }
         public string original_language { get; set; }
+        public string poster_path { get; set; }
         public string status { get; set; }
         public string release_date { get; set; }
         public string revenue { get; set; }
