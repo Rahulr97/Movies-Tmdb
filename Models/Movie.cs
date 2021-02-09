@@ -13,8 +13,9 @@ namespace piquota.Models
             public string title { get; set; }
             public string overview { get; set; }
             public string poster_path { get; set; }
+            public List<ProductionCompany> production_companies { get; set; }
+            public List<genre> genres { get; set; }
             public string homepage { get; set; }
-            
             public string budget { get; set; }
             public string release_date { get; set; }
             public string revenue { get; set; }
@@ -40,6 +41,23 @@ namespace piquota.Models
         public int total_pages { get; set; }
     }
 
+    public class ProductionCompany
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string origin_country { get; set; }
+    }
+
+    public class genre
+    {
+
+        public int id { get; set; }
+        public string g { get; set; }
+
+        public string name { get; set; }
+    }
+
+
     public class ResponseMovie
     {
         public bool adult { get; set; }
@@ -48,6 +66,8 @@ namespace piquota.Models
         public string overview { get; set; }
         public string budget { get; set; }
         public string original_language { get; set; }
+        public List<ProductionCompany> production_companies { get; set; }
+        public List<genre> genres { get; set; }
         public string poster_path { get; set; }
         public string status { get; set; }
         public string release_date { get; set; }

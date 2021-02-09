@@ -35,8 +35,22 @@
 <div id="apiDiv">
     <div class="return"><a href="@Url.Action("Index", "Movie")">Return</a></div>
     <h4>@Model.title</h4>
-    <p class="Overview"><img src="@Model.poster_path" />@Model.overview</p>
+    <img src="@Model.poster_path" />
+    <p class="Overview">@Model.overview</p>
     <p>Popularity: @Model.popularity</p>
     <p>Runtime: @Model.runtime</p>
     <p>release_date: @Model.release_date</p>
+
+    @foreach (var n in Model.genres)
+    {
+        <p>genre: @n.name</p>
+
+    }
+    @foreach (var item in Model.production_companies)
+    {
+        <p>production_company: @item.name</p>
+        <p>origin_country: @item.origin_country</p>
+
+    }
+
 </div>

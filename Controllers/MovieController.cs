@@ -88,7 +88,7 @@ namespace piquota.Controllers
         public ActionResult GetMovie(int id)
         {
             /*Calling API https://developers.themoviedb.org/3/movie */
-            string apiKey = "3356865d41894a2fa9bfa84b2b5f59bb";
+            string apiKey = "107c1d9499aab019dd11605773c06ac2";
             HttpWebRequest apiRequest = WebRequest.Create("https://api.themoviedb.org/3/movie/" + id + "?api_key=" + apiKey + "&language=en-US") as HttpWebRequest;
             string requesturl = "https://api.themoviedb.org/3/movie/" + id + "?api_key=" + apiKey + "&language=en-US";
 
@@ -103,6 +103,7 @@ namespace piquota.Controllers
 
             ResponseMovie rootObject = JsonConvert.DeserializeObject<ResponseMovie>(response.Content);
             Movie theMovieDb = new Movie();
+            
             theMovieDb.poster_path = rootObject.poster_path == null ? Url.Content("~/Content/Image/no-image.png") : "https://image.tmdb.org/t/p/w500/" + rootObject.poster_path;
             theMovieDb.title = rootObject.title;
             theMovieDb.overview = rootObject.overview;
@@ -110,8 +111,19 @@ namespace piquota.Controllers
             theMovieDb.release_date = rootObject.release_date;
             theMovieDb.imdb_id = rootObject.imdb_id;
             theMovieDb.runtime = rootObject.runtime;
+            theMovieDb.production_companies = new List<ProductionCompany>();
+            theMovieDb.genres = new List<genre>();
             
-            
+            foreach (genre genre in rootObject.genres)
+            {
+                
+                theMovieDb.genres.Add(new genre() { name=genre.name}) ;
+            }
+
+            foreach ( ProductionCompany pc in rootObject.production_companies)
+            { 
+                theMovieDb.production_companies.Add(new ProductionCompany() {id=pc.id, name=pc.name, origin_country=pc.origin_country} );
+            }
 
             return View(theMovieDb);
         }
